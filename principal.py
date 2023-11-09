@@ -31,6 +31,10 @@ def buscar():
     window.destroy()
     subprocess.Popen('python buscar.py', shell=True)
 
+def reservar():
+    window.destroy()
+    subprocess.Popen('python reservar.py', shell=True)
+
 window = Tk()
 window.title("Bienvenido!")
 window.iconbitmap("icono.ico")
@@ -71,7 +75,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("Reservar btn"),
+    command=reservar,
     relief="flat",
     cursor="hand2"
 )
