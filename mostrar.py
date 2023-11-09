@@ -8,6 +8,7 @@ from pathlib import Path
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+import subprocess
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -16,6 +17,10 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame1")
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
+
+def regresar():
+    window.destroy()
+    subprocess.Popen('python principal.py', shell=True)
 
 
 window = Tk()
@@ -79,7 +84,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
+    command=regresar,
     relief="flat"
 )
 button_1.place(
