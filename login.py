@@ -91,9 +91,9 @@ entry_bg_1 = canvas.create_image(
 entry_1 = Entry(
     bd=0,
     bg="#F2DD88",
-    fg="#947A1F",
     highlightthickness=0,
     font=fuente,
+    fg="#947A1F",
     justify="center"
 )
 entry_1.place(

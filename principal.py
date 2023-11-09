@@ -27,6 +27,10 @@ def agregar():
     window.destroy()
     subprocess.Popen('python agregar.py', shell=True)
     
+def buscar():
+    window.destroy()
+    subprocess.Popen('python buscar.py', shell=True)
+
 window = Tk()
 window.title("Bienvenido!")
 window.iconbitmap("icono.ico")
@@ -151,7 +155,7 @@ button_5 = Button(
     image=button_image_5,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("Boton de buscar"),
+    command=buscar,
     relief="flat",
     cursor="hand2"
 )
