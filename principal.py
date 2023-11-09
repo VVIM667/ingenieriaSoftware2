@@ -11,6 +11,7 @@ import subprocess
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
+
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame0")
 
@@ -21,6 +22,10 @@ def relative_to_assets(path: str) -> Path:
 def mostrar():
     window.destroy()
     subprocess.Popen('python mostrar.py', shell=True)
+
+def agregar():
+    window.destroy()
+    subprocess.Popen('python agregar.py', shell=True)
     
 window = Tk()
 window.title("Bienvenido!")
@@ -163,7 +168,7 @@ button_6 = Button(
     image=button_image_6,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("Boton Agregar"),
+    command=agregar,
     relief="flat",
     cursor="hand2"
 )
