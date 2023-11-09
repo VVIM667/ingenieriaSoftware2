@@ -19,6 +19,10 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame0")
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+def regresar():
+    window.destroy()
+    subprocess.Popen('python login.py', shell=True)
+
 def mostrar():
     window.destroy()
     subprocess.Popen('python mostrar.py', shell=True)
@@ -67,6 +71,23 @@ image_1 = canvas.create_image(
     438.0,
     294.0,
     image=image_image_1
+)
+
+regresa_image = PhotoImage(file=relative_to_assets("regresar.png"))
+
+button_1 = Button(
+    image=regresa_image,
+    borderwidth=0,
+    highlightthickness=0,
+    command=regresar,
+    relief="flat"
+)
+
+button_1.place(
+    x=16.0,
+    y=4.0,
+    width=72.0,
+    height=79.0
 )
 
 image_image_2 = PhotoImage(
