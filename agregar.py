@@ -209,6 +209,8 @@ def escribir_datos():
     # Agrega el libro a la biblioteca y escribe los datos en el archivo CSV
     biblioteca.agregar_libro(nuevo_libro)
 
+    biblioteca.actualizar_csv()
+
     # Limpia los campos de entrada después de escribir los datos
     entry_1.delete(0, 'end')
     entry_2.delete(0, 'end')
@@ -258,6 +260,15 @@ button_1.place(
     height=58.0
 )
 
+button_image_2 = PhotoImage(
+    file=relative_to_assets("button_2.png"))
+button_2 = Button(
+    image=button_image_2,
+    borderwidth=0,
+    highlightthickness=0,
+    command=regresar,
+    relief="flat"
+)
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
@@ -421,15 +432,7 @@ image_4 = canvas.create_image(
     image=image_image_4
 )
 
-button_image_2 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
-button_2 = Button(
-    image=button_image_2,
-    borderwidth=0,
-    highlightthickness=0,
-    command=regresar,
-    relief="flat"
-)
+
 button_2.place(
     x=16.0,
     y=4.0,
