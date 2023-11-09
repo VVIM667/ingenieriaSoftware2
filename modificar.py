@@ -10,9 +10,8 @@ from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 import subprocess
 
-
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame5")
+ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame6")
 
 
 def relative_to_assets(path: str) -> Path:
@@ -22,11 +21,12 @@ def regresar():
     window.destroy()
     subprocess.Popen('python principal.py', shell=True)
 
+
 window = Tk()
 
 window.geometry("700x550")
 window.configure(bg = "#ECECC4")
-window.title("Reservar")
+fuente=("Righteous Regular", 25)
 
 canvas = Canvas(
     window,
@@ -39,13 +39,26 @@ canvas = Canvas(
 )
 
 canvas.place(x = 0, y = 0)
-canvas.create_rectangle(
-    0.0,
-    0.0,
-    700.0,
-    87.0,
-    fill="#F1C40F",
-    outline="")
+entry_image_1 = PhotoImage(
+    file=relative_to_assets("entry_1.png"))
+entry_bg_1 = canvas.create_image(
+    349.5,
+    307.0,
+    image=entry_image_1
+)
+entry_1 = Entry(
+    bd=0,
+    bg="#F2DD88",
+    fg="#947A1F",
+    highlightthickness=0,
+    font=fuente
+)
+entry_1.place(
+    x=90.0,
+    y=271.0,
+    width=519.0,
+    height=70.0
+)
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
@@ -53,60 +66,31 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=regresar,
+    command=lambda: print("button_1 clicked"),
     relief="flat"
 )
 button_1.place(
-    x=16.0,
-    y=4.0,
-    width=72.0,
-    height=79.0
+    x=248.0,
+    y=389.0,
+    width=202.0,
+    height=58.0
 )
 
-canvas.create_text(
-    204.0,
+canvas.create_rectangle(
     0.0,
+    1.0,
+    700.0,
+    88.0,
+    fill="#F1C40F",
+    outline="")
+
+canvas.create_text(
+    192.0,
+    5.0,
     anchor="nw",
-    text="Reservar",
+    text="Modificar",
     fill="#F5F5DC",
     font=("Righteous Regular", 70 * -1)
-)
-
-canvas.create_text(
-    165.0,
-    164.0,
-    anchor="nw",
-    text="Titulo de libro a reservar:",
-    fill="#E67E22",
-    font=("Righteous Regular", 30 * -1)
-)
-
-entry_image_1 = PhotoImage(
-    file=relative_to_assets("entry_1.png"))
-entry_bg_1 = canvas.create_image(
-    380.0,
-    280.0,
-    image=entry_image_1
-)
-entry_1 = Entry(
-    bd=0,
-    bg="#F2DD88",
-    fg="#000716",
-    highlightthickness=0
-)
-entry_1.place(
-    x=237.0,
-    y=254.0,
-    width=286.0,
-    height=50.0
-)
-
-image_image_1 = PhotoImage(
-    file=relative_to_assets("image_1.png"))
-image_1 = canvas.create_image(
-    190.0,
-    280.0,
-    image=image_image_1
 )
 
 button_image_2 = PhotoImage(
@@ -115,14 +99,31 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
+    command=regresar,
     relief="flat"
 )
 button_2.place(
-    x=241.0,
-    y=359.0,
-    width=202.0,
-    height=58.0
+    x=16.0,
+    y=5.0,
+    width=72.0,
+    height=79.0
+)
+
+canvas.create_text(
+    216.0,
+    181.0,
+    anchor="nw",
+    text="Titulo a modificar:",
+    fill="#E67E22",
+    font=("Righteous Regular", 45 * -1)
+)
+
+image_image_1 = PhotoImage(
+    file=relative_to_assets("image_1.png"))
+image_1 = canvas.create_image(
+    142.0,
+    204.0,
+    image=image_image_1
 )
 window.resizable(False, False)
 window.mainloop()

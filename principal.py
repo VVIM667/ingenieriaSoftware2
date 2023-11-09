@@ -34,6 +34,14 @@ def buscar():
 def reservar():
     window.destroy()
     subprocess.Popen('python reservar.py', shell=True)
+    
+def modificar():
+    window.destroy()
+    subprocess.Popen('python modificar.py', shell=True)
+
+def eliminar():
+    window.destroy()
+    subprocess.Popen('python eliminar.py', shell=True)
 
 window = Tk()
 window.title("Bienvenido!")
@@ -92,7 +100,7 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("Editar btn"),
+    command=modificar,
     relief="flat",
     cursor="hand2"
 )
@@ -142,7 +150,7 @@ button_4 = Button(
     image=button_image_4,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("Eliminar boton"),
+    command=eliminar,
     relief="flat",
     cursor="hand2"
 )
