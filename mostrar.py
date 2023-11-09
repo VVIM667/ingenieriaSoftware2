@@ -9,10 +9,62 @@ from pathlib import Path
 # Explicit imports to satisfy Flake8
 from tkinter import END, Tk, Canvas, Entry, Text, Button, PhotoImage
 import subprocess
-import biblioteca as biblioteca
+import csv
+
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame1")
 
+#CLASE LIBRO
+class Libro:
+    def __init__(self, titulo, autor, genero, anio_publicacion, estado):
+        self.titulo = titulo
+        self.autor = autor
+        self.genero = genero
+        self.anio_publicacion = anio_publicacion
+        self.estado = estado
+
+# Definición de la clase Biblioteca
+class Biblioteca: 
+    def __init__(self):
+        self.libros = []
+        self.cargar_csv()
+
+    def agregar_libro(self, libro):
+        self.libros.append(libro)
+        self.guardar_en_csv(libro)
+        print("\nLibro registrado con éxito.")
+
+    def cargar_csv(self):
+        try:
+            with open('biblioteca.csv', mode='r', newline='', encoding='utf-8') as file:
+                reader = csv.reader(file)
+                for row in reader:
+                    if len(row) == 5:
+                        libro = Libro(row[0], row[1], row[2], row[3], row[4])
+                        self.libros.append(libro)
+        except FileNotFoundError:
+            pass
+
+    def guardar_en_csv(self, libro):
+        with open("biblioteca.csv", mode="a", newline='', encoding='utf-8') as file:
+            escribir = csv.writer(file)
+            escribir.writerow([libro.titulo, libro.autor, libro.genero, libro.anio_publicacion, libro.estado])
+
+    def reservar_libro(self, titulo_libro):
+        for libro in self.libros:
+            if libro.titulo.lower() == titulo_libro.lower():
+                if libro.estado == "Disponible":
+                    libro.estado = "Reservado"
+                    self.actualizar_csv()
+                    print(f"Libro '{libro.titulo}' reservado con éxito.")
+                    return
+        print(f"El libro '{titulo_libro}' no se encuentra disponible para reserva.")
+
+    def actualizar_csv(self):
+        with open("biblioteca.csv", mode="w", newline='', encoding='utf-8') as file:
+            escribir = csv.writer(file)
+            for libro in self.libros:
+                escribir.writerow([libro.titulo, libro.autor, libro.genero, libro.anio_publicacion, libro.estado])
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
@@ -21,6 +73,7 @@ def regresar():
     window.destroy()
     subprocess.Popen('python principal.py', shell=True)
 
+biblioteca = Biblioteca()
 
 window = Tk()
 
@@ -94,6 +147,9 @@ button_1.place(
 )
 window.resizable(False, False)
 
+
+
+
 def showbk():
     pass
     lst = []
@@ -118,5 +174,7 @@ def showbk():
                  
                 e.grid(row=i, column=j)
                 e.insert(END, lst[i][j])
+
+showbk()
 
 window.mainloop()
