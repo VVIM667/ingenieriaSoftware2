@@ -81,7 +81,7 @@ window.geometry("700x550")
 window.configure(bg = "#ECECC4")
 #window.iconbitmap("icono.ico")
 window.title("Mostrar")
-
+fuente=("Righteous Regular", 15)
 canvas = Canvas(
     window,
     bg = "#ECECC4",
@@ -169,9 +169,7 @@ def showbk():
     for i in range(total_rows):
             for j in range(total_columns):
                  
-                e = Entry(entry_1, width=16, fg='black',
-                               font=('Arial',11,'bold'))
-                 
+                e = Entry(entry_1, width=16,font=fuente, fg="#947A1F")
                 e.grid(row=i, column=j)
                 e.insert(END, lst[i][j])
 
