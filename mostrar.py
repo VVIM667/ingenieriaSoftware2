@@ -47,18 +47,18 @@ entry_bg_1 = canvas.create_image(
     274.0,
     image=entry_image_1
 )
-entry_1 = Text(
-    bd=0,
-    bg="#F2DD88",
-    fg="#000716",
-    highlightthickness=0
-)
-entry_1.place(
-    x=32.0,
-    y=125.0,
-    width=631.0,
-    height=296.0
-)
+# entry_1 = Text(
+#     bd=0,
+#     bg="#F2DD88",
+#     fg="#000716",
+#     highlightthickness=0
+# )
+# entry_1.place(
+#     x=32.0,
+#     y=125.0,
+#     width=631.0,
+#     height=296.0
+# )
 
 canvas.create_rectangle(
     0.0,
@@ -95,7 +95,6 @@ button_1.place(
 window.resizable(False, False)
 
 def showbk():
-    pass
     lst = []
     for libro in biblioteca.libros:
         titulo = libro.titulo
@@ -113,10 +112,10 @@ def showbk():
     for i in range(total_rows):
             for j in range(total_columns):
                  
-                e = Entry(entry_1, width=16, fg='black',
+                e = Entry(canvas, width=16, fg='black',
                                font=('Arial',11,'bold'))
                  
                 e.grid(row=i, column=j)
                 e.insert(END, lst[i][j])
-
+# como mostrar los libros en la ventana
 window.mainloop()
