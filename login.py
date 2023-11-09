@@ -67,7 +67,7 @@ canvas.create_text(
     323.0,
     130.0,
     anchor="nw",
-    text="Usuarios:",
+    text="Usuariios:",
     fill="#E67E22",
     font=("Righteous Regular", 30 * -1)
 )
