@@ -4,6 +4,7 @@
 
 
 from pathlib import Path
+import subprocess
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
@@ -17,10 +18,13 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame0")
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
-
+def mostrar():
+    window.destroy()
+    subprocess.Popen('python mostrar.py', shell=True)
+    
 window = Tk()
 window.title("Bienvenido!")
-#window.iconbitmap("icono.ico")
+window.iconbitmap("icono.ico")
 window.geometry("700x550")
 window.configure(bg = "#EBEBC3")
 
@@ -92,7 +96,7 @@ button_3 = Button(
     image=button_image_3,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("mostrar btn"),
+    command=mostrar,
     relief="flat",
     cursor="hand2"
 )
