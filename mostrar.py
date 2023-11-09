@@ -7,9 +7,8 @@ from pathlib import Path
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
-
-
+from tkinter import END, Tk, Canvas, Entry, Text, Button, PhotoImage
+import biblioteca as biblioteca
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame1")
 
@@ -22,7 +21,7 @@ window = Tk()
 
 window.geometry("700x550")
 window.configure(bg = "#ECECC4")
-window.iconbitmap("icono.ico")
+#window.iconbitmap("icono.ico")
 window.title("Mostrar")
 
 canvas = Canvas(
@@ -89,4 +88,30 @@ button_1.place(
     height=79.0
 )
 window.resizable(False, False)
+
+def showbk():
+    pass
+    lst = []
+    for libro in biblioteca.libros:
+        titulo = libro.titulo
+        autor = libro.autor
+        genero = libro.genero
+        anio = libro.anio_publicacion
+        estado = libro.estado
+
+        tupla = (titulo,autor,genero,anio,estado)
+        lst.append(tupla)
+
+    total_rows = len(lst)
+    total_columns = len(lst[0])
+
+    for i in range(total_rows):
+            for j in range(total_columns):
+                 
+                e = Entry(entry_1, width=16, fg='black',
+                               font=('Arial',11,'bold'))
+                 
+                e.grid(row=i, column=j)
+                e.insert(END, lst[i][j])
+
 window.mainloop()
