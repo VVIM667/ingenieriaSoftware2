@@ -151,7 +151,6 @@ window.resizable(False, False)
 
 
 def showbk():
-    pass
     lst = []
     for libro in biblioteca.libros:
         titulo = libro.titulo
