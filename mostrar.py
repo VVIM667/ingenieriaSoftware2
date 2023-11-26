@@ -77,7 +77,7 @@ biblioteca = Biblioteca()
 
 window = Tk()
 
-window.geometry("700x550")
+window.geometry("1230x750")
 window.configure(bg = "#ECECC4")
 #window.iconbitmap("icono.ico")
 window.title("Mostrar")
@@ -85,8 +85,8 @@ fuente=("Righteous Regular", 15)
 canvas = Canvas(
     window,
     bg = "#ECECC4",
-    height = 550,
-    width = 700,
+    width = 1230,
+    height = 750,
     bd = 0,
     highlightthickness = 0,
     relief = "ridge"
@@ -106,11 +106,11 @@ entry_1 = Text(
     fg="#000716",
     highlightthickness=0
 )
-entry_1.place(
+entry_1.place( # controla la tabla 
     x=32.0,
     y=125.0,
-    width=631.0,
-    height=296.0
+    width=6000,
+    height=9000
 )
 
 canvas.create_rectangle(
@@ -132,6 +132,7 @@ canvas.create_text(
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
+
 button_1 = Button(
     image=button_image_1,
     borderwidth=0,
@@ -146,8 +147,6 @@ button_1.place(
     height=79.0
 )
 window.resizable(False, False)
-
-
 
 
 def showbk():
@@ -168,7 +167,7 @@ def showbk():
     for i in range(total_rows):
             for j in range(total_columns):
                  
-                e = Entry(entry_1, width=16,font=fuente, fg="#947A1F")
+                e = Entry(entry_1, width=15,font=fuente, fg="#947A1F")
                 e.grid(row=i, column=j)
                 e.insert(END, lst[i][j])
 
