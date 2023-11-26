@@ -33,9 +33,14 @@ class Biblioteca:
         self.cargar_csv()
 
     def agregar_libro(self, libro):
-        self.libros.append(libro)
-        self.guardar_en_csv(libro)
-        print("\nLibro registrado con éxito.")
+        # Verifica si el libro ya existe en la biblioteca
+        if any(libro.titulo.lower() == existing_libro.titulo.lower() for existing_libro in self.libros):
+            messagebox.showinfo("Libro Existente", f"El libro '{libro.titulo}' ya existe en la biblioteca.")
+        else:
+            self.libros.append(libro)
+            self.guardar_en_csv(libro)
+            print("\nLibro registrado con éxito.")
+            
 
     def cargar_csv(self):
         try:

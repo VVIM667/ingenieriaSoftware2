@@ -7,9 +7,16 @@ from pathlib import Path
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
-from tkinter import END, Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import END, Tk, Canvas, Entry, Text, Button, PhotoImage,ttk,VERTICAL
 import subprocess
 import csv
+from tkinter import Scrollbar
+
+
+
+
+#SCROLLBAR 
+
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame1")
@@ -65,6 +72,25 @@ class Biblioteca:
             escribir = csv.writer(file)
             for libro in self.libros:
                 escribir.writerow([libro.titulo, libro.autor, libro.genero, libro.anio_publicacion, libro.estado])
+
+    
+
+    def mostrar_libros(self):
+        lst = []
+        for libro in self.libros:
+            titulo = libro.titulo
+            autor = libro.autor
+            genero = libro.genero
+            anio = libro.anio_publicacion
+            estado = libro.estado
+
+            tupla = (titulo,autor,genero,anio,estado)
+            lst.append(tupla)
+
+        return lst
+
+        
+
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
@@ -130,6 +156,9 @@ canvas.create_text(
     font=("Righteous Regular", 70 * -1)
 )
 
+
+
+
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
 button_1 = Button(
@@ -166,12 +195,20 @@ def showbk():
     total_rows = len(lst)
     total_columns = len(lst[0])
 
+    scrollbar = Scrollbar(entry_1, orient= VERTICAL)
+    scrollbar.grid(row=0, column=total_columns, sticky='ns')
+
+    entry_1.config(yscrollcommand=scrollbar.set)
+
+    scrollbar.config(command=entry_1.yview)
+
     for i in range(total_rows):
             for j in range(total_columns):
                  
                 e = Entry(entry_1, width=16,font=fuente, fg="#947A1F")
                 e.grid(row=i, column=j)
                 e.insert(END, lst[i][j])
+                
 
 showbk()
 
