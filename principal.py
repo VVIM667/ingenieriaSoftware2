@@ -49,7 +49,7 @@ def eliminar():
 
 window = Tk()
 window.title("Bienvenido!")
-window.iconbitmap("icono.ico")
+
 window.geometry("700x550")
 window.configure(bg = "#EBEBC3")
 

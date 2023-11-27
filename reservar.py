@@ -189,7 +189,6 @@ class Biblioteca:
             ventana_modificar.mainloop()
 
 biblioteca = Biblioteca()
-
 def reservar():
 
         titulo_libro = entry_1.get()

@@ -31,7 +31,7 @@ window = Tk()
 
 window.geometry("700x550")
 window.configure(bg = "#EBEBC3")
-window.iconbitmap("icono.ico")
+
 fuente=("Righteous Regular", 25)
 window.title("Iniciar sesión")
 
